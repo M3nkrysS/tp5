@@ -60,6 +60,7 @@ class MyGame(arcade.Window):
         self.mandarin = 255, 156, 0
         self.color_list = [self.black, self.dark_blue, self.blue, self.brown, self.cyan, self.gold, self.green, self.red, self.grey, self.orange, self.pink, self.purple, self.silver, self.violet, self.white, self.yellow, self.salmon, self.salmon, self.copper, self.brass, self.mandarin]
         self.number_of_repeats = 0
+        self.clear()
 
     def on_draw(self):
         """
