@@ -37,6 +37,7 @@ class MyGame(arcade.Window):
         arcade.draw_circle_outline(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_HEIGHT/2, arcade.color.CHARTREUSE,
                                    10, self.tilt_angle, 7)
 
+        self.bones_draw()
         self.skull_draw()
 
 
@@ -67,8 +68,8 @@ class MyGame(arcade.Window):
         arcade.draw_circle_outline(500, 400,
                                    50, arcade.color.BLACK, 5)
         # dent(4)
-        r = arcade.rect.XYWH(SCREEN_WIDTH/2, 240, 200, 100)
-        arcade.draw_rect_filled(r, arcade.color.BONE)
+        r0 = arcade.rect.XYWH(SCREEN_WIDTH/2, 240, 200, 100)
+        arcade.draw_rect_filled(r0, arcade.color.BONE)
         arcade.draw_arc_filled(325, 190, 50, 70,
                                arcade.color.BONE, 0, 180, 180)
         arcade.draw_arc_filled(375, 190, 50, 70,
@@ -96,8 +97,17 @@ class MyGame(arcade.Window):
                                 arcade.color.BLACK, 0, 180, 5)
 
     def bones_draw(self):
-
         # os 1
+        r1 = arcade.rect.XYWH(SCREEN_WIDTH/2.1, SCREEN_HEIGHT/1.9, 500, 150)
+        arcade.draw_rect_filled(r1, arcade.color.BONE, 45)
+        arcade.draw_rect_outline(r1, arcade.color.BLACK, 5, 45)
+        # os 2
+        r2 = arcade.rect.XYWH(SCREEN_WIDTH / 1.9, SCREEN_HEIGHT / 1.9, 500, 150)
+        arcade.draw_rect_filled(r2, arcade.color.BONE, 135)
+        arcade.draw_rect_outline(r2, arcade.color.BLACK, 5, 135)
+
+    def hacked_draw(self):
+        x = 1
 
 
 
