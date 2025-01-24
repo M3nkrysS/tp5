@@ -20,6 +20,7 @@ class MyGame(arcade.Window):
         super().__init__(width, height, title)
 
         arcade.set_background_color(arcade.color.BLACK_BEAN)
+        self.tilt_angle = 0
 
 
         # Si vous avez des listes de sprites, il faut les créer ici et les
@@ -31,9 +32,12 @@ class MyGame(arcade.Window):
         de votre jeu à l'écran.
         """
         self.clear()
+        self.tilt_angle += 0.5
 
-        arcade.draw_circle_outline(SCREEN_WIDTH/2, SCREEN_HEIGHT/1.55, 222, arcade.color.CHARTREUSE,
-                                   10, random_number(45), 7)
+        arcade.draw_circle_outline(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_HEIGHT/2, arcade.color.CHARTREUSE,
+                                   10, self.tilt_angle, 7)
+
+        self.skull_draw()
 
 
 
@@ -48,7 +52,53 @@ class MyGame(arcade.Window):
         pass
 
     def skull_draw(self):
-        arcade.draw.draw_ellipse_filled(SCREEN_WIDTH/2, SCREEN_HEIGHT/1.55, 200, (1,1,1))
+        # cranium
+        arcade.draw.draw_ellipse_filled(SCREEN_WIDTH/2, SCREEN_HEIGHT/1.55,
+                                        400, 370, arcade.color.BONE)
+        arcade.draw_ellipse_outline(SCREEN_WIDTH/2, SCREEN_HEIGHT/1.55,
+                                    400, 370, arcade.color.BLACK, 5)
+        # yeux
+        arcade.draw_circle_filled(300, 400,
+                                  50, arcade.color.RED)
+        arcade.draw_circle_filled(500, 400,
+                                  50, arcade.color.RED)
+        arcade.draw_circle_outline(300, 400,
+                                    50, arcade.color.BLACK, 5)
+        arcade.draw_circle_outline(500, 400,
+                                   50, arcade.color.BLACK, 5)
+        # dent(4)
+        r = arcade.rect.XYWH(SCREEN_WIDTH/2, 240, 200, 100)
+        arcade.draw_rect_filled(r, arcade.color.BONE)
+        arcade.draw_arc_filled(325, 190, 50, 70,
+                               arcade.color.BONE, 0, 180, 180)
+        arcade.draw_arc_filled(375, 190, 50, 70,
+                               arcade.color.BONE, 0, 180, 180)
+        arcade.draw_arc_filled(425, 190, 50, 70,
+                               arcade.color.BONE, 0, 180, 180)
+        arcade.draw_arc_filled(475, 190, 50, 70,
+                               arcade.color.BONE, 0, 180, 180)
+
+        arcade.draw_arc_outline(325, 190, 50, 70,
+                                arcade.color.BLACK, 0, 180, 5, 180)
+        arcade.draw_arc_outline(375, 190, 50, 70,
+                                arcade.color.BLACK, 0, 180, 5, 180)
+        arcade.draw_arc_outline(425, 190, 50, 70,
+                                arcade.color.BLACK, 0, 180, 5, 180)
+        arcade.draw_arc_outline(475, 190, 50, 70,
+                                arcade.color.BLACK, 0, 180, 5, 180)
+        arcade.draw_arc_outline(325, 200, 50, 60,
+                                arcade.color.BLACK, 0, 180, 5)
+        arcade.draw_arc_outline(375, 200, 50, 60,
+                                arcade.color.BLACK, 0, 180, 5)
+        arcade.draw_arc_outline(425, 200, 50, 60,
+                                arcade.color.BLACK, 0, 180, 5)
+        arcade.draw_arc_outline(475, 200, 50, 60,
+                                arcade.color.BLACK, 0, 180, 5)
+
+    def bones_draw(self):
+
+        # os 1
+
 
 
 def main():
