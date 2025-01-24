@@ -39,6 +39,7 @@ class MyGame(arcade.Window):
 
         self.bones_draw()
         self.skull_draw()
+        self.hacked_draw()
 
 
 
@@ -107,8 +108,8 @@ class MyGame(arcade.Window):
         arcade.draw_rect_outline(r2, arcade.color.BLACK, 5, 135)
 
     def hacked_draw(self):
-        x = 1
-
+        hacked = arcade.Text("H CKED", SCREEN_WIDTH / 2, 100, arcade.color.ELECTRIC_CRIMSON, 100, 20)
+        hacked.draw()
 
 
 def main():
