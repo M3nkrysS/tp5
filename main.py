@@ -1,7 +1,9 @@
 """
-Modèle de départ pour la programmation Arcade.
-Il suffit de modifier les méthodes nécessaires à votre jeu.
+Lucas Beaudry Tinkler
+GR: 401
+dessin d'un écran Hacké
 """
+
 import arcade
 from random import randint
 
@@ -10,18 +12,12 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Modèle de départ"
 
-def random_number(randomness):
-    number = randint(0, randomness)
-    return number
-
 
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
-        arcade.set_background_color(arcade.color.BLACK_BEAN)
-        self.tilt_angle = 0
-
+        arcade.set_background_color(arcade.color.EERIE_BLACK)
 
         # Si vous avez des listes de sprites, il faut les créer ici et les
         # initialiser à None.
@@ -32,10 +28,8 @@ class MyGame(arcade.Window):
         de votre jeu à l'écran.
         """
         self.clear()
-        self.tilt_angle += 0.5
-
         arcade.draw_circle_outline(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_HEIGHT/2, arcade.color.CHARTREUSE,
-                                   10, self.tilt_angle, 7)
+                                   10, 0, 8)
 
         self.bones_draw()
         self.skull_draw()
@@ -61,9 +55,9 @@ class MyGame(arcade.Window):
                                     400, 370, arcade.color.BLACK, 5)
         # yeux
         arcade.draw_circle_filled(300, 400,
-                                  50, arcade.color.RED)
+                                  50, arcade.color.RED_DEVIL)
         arcade.draw_circle_filled(500, 400,
-                                  50, arcade.color.RED)
+                                  50, arcade.color.RED_DEVIL)
         arcade.draw_circle_outline(300, 400,
                                     50, arcade.color.BLACK, 5)
         arcade.draw_circle_outline(500, 400,
@@ -97,19 +91,35 @@ class MyGame(arcade.Window):
         arcade.draw_arc_outline(475, 200, 50, 60,
                                 arcade.color.BLACK, 0, 180, 5)
 
+        points_list0 = [(300, 260), (300, 200)]
+        points_list1 = [(500, 260), (500, 200)]
+        arcade.draw_lines(points_list0, arcade.color.BLACK, 3)
+        arcade.draw_lines(points_list1, arcade.color.BLACK, 3)
+
+        # nez
+        y = SCREEN_HEIGHT / 2
+        x = SCREEN_WIDTH / 2
+        arcade.draw.draw_triangle_filled(x, y + 50,
+                                         x - 40, y - 20,
+                                         x + 40, y - 20,
+                                         arcade.color.BLACK)
+
     def bones_draw(self):
         # os 1
-        r1 = arcade.rect.XYWH(SCREEN_WIDTH/2.1, SCREEN_HEIGHT/1.9, 500, 150)
-        arcade.draw_rect_filled(r1, arcade.color.BONE, 45)
+        r1 = arcade.rect.XYWH(SCREEN_WIDTH/2.1, SCREEN_HEIGHT/2, 700, 150)
+        arcade.draw_rect_filled(r1, arcade.color.RED, 45)
         arcade.draw_rect_outline(r1, arcade.color.BLACK, 5, 45)
         # os 2
-        r2 = arcade.rect.XYWH(SCREEN_WIDTH / 1.9, SCREEN_HEIGHT / 1.9, 500, 150)
-        arcade.draw_rect_filled(r2, arcade.color.BONE, 135)
+        r2 = arcade.rect.XYWH(SCREEN_WIDTH / 1.9, SCREEN_HEIGHT / 2, 700, 150)
+        arcade.draw_rect_filled(r2, arcade.color.RED, 135)
         arcade.draw_rect_outline(r2, arcade.color.BLACK, 5, 135)
 
     def hacked_draw(self):
-        hacked = arcade.Text("H CKED", SCREEN_WIDTH / 2, 100, arcade.color.ELECTRIC_CRIMSON, 100, 20)
+        hacked = arcade.Text("H  CKED", 200, 10, arcade.color.ANTI_FLASH_WHITE, 100, 20)
         hacked.draw()
+        points_list2 = [(285, 5), (305, 5), (315, 35), (325, 5), (345, 5), (315, 105)]
+        arcade.draw_polygon_filled(points_list2, arcade.color.IMPERIAL_RED)
+        arcade.draw_polygon_outline(points_list2, arcade.color.BLACK, 5)
 
 
 def main():
