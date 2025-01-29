@@ -1,10 +1,8 @@
 """
 Lucas Beaudry Tinkler
 GR: 401
-dssin d'un écran Hacké
+dessin d'un écran Hacké
 """
-from abc import ABC
-
 import arcade
 
 
@@ -13,10 +11,10 @@ SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Modèle de départ"
 
 
-class MyGame(arcade.Window, ABC):
+class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
-        arcade.set_background_color(arcade.color.EERIE_BLACK)
+        arcade.set_background_color(arcade.color.BLUE)
 
     def on_draw(self):
         """
@@ -25,13 +23,16 @@ class MyGame(arcade.Window, ABC):
         """
         # efface le dessin d'avant avec EERIE_BLACK
         self.clear()
-        # ca dessine l'octogone dans le fond d'écran
-        arcade.draw_circle_outline(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_HEIGHT/2, arcade.color.CHARTREUSE,
-                                   10, 0, 8)
+
         # là ou j'apelle les fonctions
-        self.x_draw()
-        self.skull_draw()
-        self.hacked_draw()
+        self.blue_creen_draw()
+
+        # ca dessine l'octogone dans le fond d'écran
+        # arcade.draw_circle_outline(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_HEIGHT / 2, arcade.color.CHARTREUSE,
+        #                            10, 0, 8)
+        # self.x_draw()
+        # self.skull_draw()
+        # self.hacked_draw()
 
     def skull_draw(self):
         """ ici, la fonction dessine la pièce métresse di dessin,
@@ -113,6 +114,19 @@ class MyGame(arcade.Window, ABC):
         points_list2 = [(285, 5), (305, 5), (315, 35), (325, 5), (345, 5), (315, 105)]
         arcade.draw_polygon_filled(points_list2, arcade.color.IMPERIAL_RED)
         arcade.draw_polygon_outline(points_list2, arcade.color.BLACK, 5)
+
+    def blue_creen_draw(self):
+        # dessine le texte du BLUE SCREEN
+        sad = arcade.Text(":(", 100, 400, (255, 255, 255), 100, None,
+                          "left", "arial")
+        error = arcade.Text("Your PC ran into a problem and needs to reshart. Wer're "
+                            "just collecting some error info, and we'll reshart for "
+                            "you.", 100, 300, (255, 255, 255), 20, 600,
+                            "left", "arial", False, False, "left", "baseline", True)
+        percent = arcade.Text("20% complete", 100, 145, (255, 255, 255), 37)
+        sad.draw()
+        error.draw()
+        percent.draw()
 
 
 def main():
