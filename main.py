@@ -117,21 +117,18 @@ class MyGame(arcade.Window):
 
     def blue_creen_draw(self):
         # dessine le texte du BLUE SCREEN
-        sad = arcade.Text(":(", 100, 450, (255, 255, 255), 100, None,
-                          "left", "arial")
-        error = arcade.Text("Your PC ran into a problem and needs to reshart. Wer're "
+        sad = arcade.Text(":(", 100, 450, (255, 255, 255), 100, font_name="arial")
+        error = arcade.Text("Your PC ran into a problem and needs to reshart. We're "
                             "just collecting some error info, and we'll reshart for "
-                            "you.", 100, 360, (255, 255, 255), 16, 600,
-                            "left", "arial", False, False, "left",
-                            "baseline", True)
+                            "you.", 100, 360, (255, 255, 255), 16, 600, font_name="arial",
+                            multiline=True)
         percent = arcade.Text("20% complete", 100, 280, (255, 255, 255), 20)
         # je n'ai pas mis de code qr, car c'est trop de trouble por rien, alors j'ai appuyé sur ALT et 10 sur le NUM PAD
         code_qr = arcade.Text("◙", 80, 100,(255, 255, 255), 150)
         qr_texte = arcade.Text("For more information about this issue and possible fixes, "
                                "visit https//www.réparttashit.com\n\n\n\n\nIf you call a support person, ask them"
                                " this riddle:\n\nWhat Has A Head, But No Brain?",240, 230, (255, 255, 255),
-                               11, 600, "left", "arial", False, False,
-                               "left", "baseline", True)
+                               11, 600, font_name="arial", multiline=True)
         sad.draw()
         error.draw()
         percent.draw()
